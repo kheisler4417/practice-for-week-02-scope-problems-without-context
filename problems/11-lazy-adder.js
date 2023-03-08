@@ -22,9 +22,12 @@ AFTER YOU ARE FINISHED WITH THIS PROBLEM, ASK FOR A CODE REVIEW
   fat-arrow function
 ***********************************************************************/
 
-function lazyAdder(firstNum) {
-  // Your code here
-}
+const lazyAdder = firstNum => secondNum => thirdNum => firstNum + secondNum + thirdNum;
+
+// This function takes in the firstNum argument and returns a function that takes in
+//   secondNum and returns another function that takes in thirdNum.Finally, the sum of
+//   all three numbers is returned.This is achieved using the fat arrow syntax for
+//   implicit return statements.
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {

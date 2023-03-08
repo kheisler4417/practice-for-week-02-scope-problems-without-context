@@ -1,11 +1,11 @@
 /***********************************************************************
 Write a function named: countDownTimer(n). This function will represent a count
-down of days till the New Year. The countDownTimer function will 
+down of days till the New Year. The countDownTimer function will
 take in a number argument (n) the first time it is called and if that
 number is greater than 0 the countDownTimer will return a function.
 
-The function returned by countDownTimer can then be invoked n times before it 
-returns a string of "Happy New Year!". Look closely at how this function is 
+The function returned by countDownTimer can then be invoked n times before it
+returns a string of "Happy New Year!". Look closely at how this function is
 invoked below:
 
 Example 1:
@@ -27,9 +27,72 @@ Example 4:
   console.log(threeDays()); // prints "Happy New Year!"
 
 ***********************************************************************/
-function countDownTimer(num) {
-  // Your code here
+
+function countDownTimer(n) {
+  let count = n;
+
+  if (count <= 0) {
+    return "Happy New Year!";
+  }
+
+  return function () {
+    if (count === 1) {
+      count--;
+      return "Happy New Year!";
+    } else {
+      count--;
+      return function () {
+        if (count === 1) {
+          count--;
+          return "Happy New Year!";
+        } else {
+          count--;
+          return function () {
+            count--;
+            return "Happy New Year!";
+          }
+        }
+      };
+    }
+  };
 }
+
+/**********************************************************/
+
+// This implementation uses nested functions to handle the different
+// cases for n.When n is 0 or less, the function returns a string "Happy
+// New Year!".When n is 1, the returned function is called once to
+// return the "Happy New Year!" string.When n is 2 or greater, the returned
+// function is called multiple times to eventually return the "Happy New
+// Year!" string.
+
+// This implementation works, but it can be improved to handle any value
+// of n using recursion.Here's an updated implementation:
+
+// function countDownTimer(n) {
+//   if (n <= 0) {
+//     return "Happy New Year!";
+//   }
+
+//   return function () {
+//     if (n === 1) {
+//       n--;
+//       return "Happy New Year!";
+//     } else {
+//       n--;
+//       return countDownTimer(n);
+//     }
+//   };
+// }
+
+
+// This implementation uses recursion instead of nested functions
+// to handle the different cases for n.When n is 0 or less, the
+// function returns a string "Happy New Year!".When n is 1, the
+// returned function is called once to return the "Happy New Year!"
+// string.When n is 2 or greater, the returned function calls
+// countDownTimer recursively with n - 1 until n reaches 1, at which
+// point the "Happy New Year!" string is returned.
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {

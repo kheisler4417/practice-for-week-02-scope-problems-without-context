@@ -43,8 +43,27 @@ AFTER YOU ARE FINISHED WITH THIS PROBLEM, ASK FOR A CODE REVIEW
 ***********************************************************************/
 
 function curriedSum(numArgs) {
-  // Your code here
+  const numbers = [];
+
+  function _curriedSum(num) {
+    numbers.push(num);
+
+    if (numbers.length === numArgs) {
+      return numbers.reduce((acc, val) => acc + val);
+    } else {
+      return _curriedSum;
+    }
+  }
+
+  return _curriedSum;
 }
+
+// This implementation creates an empty array to hold the numbers, and defines
+// the _curriedSum function which takes a single argument num. _curriedSum appends
+// num to the numbers array each time it is called, and if the length of numbers
+// equals numArgs, it sums the numbers in the array and returns the result.
+// Otherwise, it returns itself, allowing it to be called again with another number.
+
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {
   module.exports = curriedSum;

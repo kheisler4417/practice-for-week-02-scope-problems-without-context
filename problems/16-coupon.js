@@ -14,9 +14,30 @@ console.log(twentyPercent([10, 20, 30])); // [ 8, 16, 24 ]
 
 
 ***********************************************************************/
+
 function coupon(discount) {
-  // Your code here
+  return function (prices) {
+    return prices.map(price => price * (1 - discount));
+  }
 }
+
+// The coupon function takes a discount argument and returns a new function that
+// takes an array of prices.The returned function applies the discount to each
+// element in the prices array using the map method and returns the new array
+// with the discounted prices.
+
+// For example, when you call coupon(0.1), it returns a new function that applies
+// a 10 % discount to each element in an array of prices.When you call
+// tenPercent([10, 20, 30]), it applies the discount to each element and returns[9, 18, 27].
+
+// Similarly, when you call coupon(0.2), it returns a new function that applies
+// a 20 % discount to each element in an array of prices.When you call
+// twentyPercent([10, 20, 30]), it applies the discount to each element and
+// returns[8, 16, 24].
+
+// This works because each time you call coupon, it creates a new closure that
+// "remembers" the discount value from its original call.The returned function,
+// therefore, has access to that value and can use it in its own calculations.
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {

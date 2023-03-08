@@ -24,9 +24,30 @@ Example 3:
   console.log(threeCoins(10)); // prints [ 25, 5, 10 ]
 
 ***********************************************************************/
+
 function coinCollector(numCoins) {
-  // Your code here
+  const coins = [];
+
+  return function collectCoin(coin) {
+    coins.push(coin);
+
+    if (coins.length === numCoins) {
+      return coins;
+    }
+
+    return collectCoin;
+  }
 }
+
+// The coinCollector function takes a single parameter numCoins which represents the
+// number of coins to be collected.Inside the coinCollector function, we create an
+// empty array coins that will hold the collected coins.
+
+// We then return a new function named collectCoin that takes a single parameter
+// coin. Inside this function, we push the coin parameter to the coins array.We
+// then check if the length of the coins array is equal to numCoins. If it is, we
+// return the coins array. Otherwise, we return the collectCoin function to continue
+// collecting coins.
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {
